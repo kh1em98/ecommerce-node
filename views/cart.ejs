@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Cart</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="aStar Fashion Template Project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.3/bootstrap.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="styles/cart.css">
+	<link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
+</head>
+
+<body>
+	<div class="super_container">
+		<!-- Header --> <% include ./nav.ejs %>
+		<!-- Home -->
+		<div class="home">
+			<div class="parallax_background parallax-window" data-parallax="scroll"
+				data-image-src="images/product_background.jpg" data-speed="0.8"></div>
+			<div class="home_container">
+				<div class="home_content">
+					<div class="home_title">Cart</div>
+					<div class="breadcrumbs">
+						<ul class="d-flex flex-row align-items-center justify-content-start">
+							<li><a href="index.html">Home</a></li>
+							<li>Your Cart</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Cart -->
+		<div class="cart_section">
+			<div class="section_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="cart_container"> <% include ./partials/messages.ejs %>
+								<!-- Cart Bar -->
+								<div class="cart_bar">
+									<ul
+										class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-start">
+										<li>Product</li>
+										<li>Price</li>
+										<li>Quantity</li>
+									</ul>
+								</div>
+								<!-- Cart Items -->
+								<div class="cart_items">
+									<ul class="cart_items_list">
+										<!-- Cart Item -->
+										<% var i = 0; allProducts.forEach((quantity,product,index) => { %> <li
+											class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+											<div
+												class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+												<div>
+													<div class="product_image"><img src=<%= product.img %> alt="">
+													</div>
+												</div>
+												<div class="product_name"><a
+														href=<%= `/product?slug=${product.slug}` %>> <%= product.name %>
+													</a> </div>
+											</div>
+											<div class="product_price text-lg-center product_text"><span>Price: </span>
+												<%= product.pricing.sale.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')  + 'đ'  %>
+											</div>
+											<div class="product_quantity_container">
+												<div class="product_quantity ml-lg-auto mr-lg-auto text-center"
+													data-index=<%= i %>>
+													<span class="product_text product_num"> <%= quantity %> </span>
+													<div class="qty_sub qty_button trans_200 text-center">
+														<span>-</span>
+													</div>
+													<div class="qty_add qty_button trans_200 text-center">
+														<span>+</span>
+													</div>
+												</div>
+											</div>
+										</li> <% i++; }) %> </ul>
+								</div>
+								<!-- Cart Buttons -->
+								<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+									<div
+										class="cart_buttons_inner ml-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+										<div class="button button_continue trans_200"><a
+												href=javascript:history.go(-1)>tiếp tục mua sắm</a></div>
+										<div class="button button_clear trans_200"><a href="categories.html">xoá hết giỏ
+												hàng</a></div>
+										<div class="button button_update trans_200"><a href="#thanh-toan">thanh toán</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section_container cart_extra_container">
+				<div class="container">
+					<div class="row">
+						<!-- Shipping & Delivery -->
+						<div class="col-xxl-6">
+							<div class="cart_extra cart_extra_1">
+								<div class="cart_extra_content cart_extra_coupon">
+									<div class="shipping">
+										<div class="cart_extra_title">Shipping Method</div>
+										<ul>
+											<li
+												class="shipping_option d-flex flex-row align-items-center justify-content-start">
+												<label class="radio_container">
+													<input type="radio" id="radio_1" name="shipping_radio"
+														class="shipping_radio">
+													<span class="radio_mark"></span>
+													<span class="radio_text">Hoả tốc</span>
+												</label>
+												<div class="shipping_price ml-auto">30.000đ</div>
+											</li>
+											<li
+												class="shipping_option d-flex flex-row align-items-center justify-content-start">
+												<label class="radio_container">
+													<input type="radio" id="radio_2" name="shipping_radio"
+														class="shipping_radio">
+													<span class="radio_mark"></span>
+													<span class="radio_text">Giao hàng tiêu chuẩn</span>
+												</label>
+												<div class="shipping_price ml-auto">10.000đ</div>
+											</li>
+											<li
+												class="shipping_option d-flex flex-row align-items-center justify-content-start">
+												<label class="radio_container">
+													<input type="radio" id="radio_3" name="shipping_radio"
+														class="shipping_radio" checked>
+													<span class="radio_mark"></span>
+													<span class="radio_text">Giao hàng tiết kiệm</span>
+												</label>
+												<div class="shipping_price ml-auto">Free</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Cart Total -->
+						<div class="col-xxl-6" id="thanh-toan">
+							<div class="cart_extra cart_extra_2">
+								<div class="cart_extra_content cart_extra_total">
+									<div class="cart_extra_title">Cart Total</div>
+									<ul class="cart_extra_total_list">
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<div class="cart_extra_total_title">Subtotal</div>
+											<div class="cart_extra_total_value subtotal ml-auto"></div>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<div class="cart_extra_total_title">Shipping</div>
+											<div class="cart_extra_total_value fee_ship ml-auto"></div>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<div class="cart_extra_total_title">Total</div>
+											<div class="cart_extra_total_value total ml-auto"></div>
+										</li>
+									</ul>
+									<div class="checkout_button trans_200">
+										<a href="#" data-toggle="modal" data-target="#cua-so-thanh-toan">Thanh toán</a>
+									</div>
+									<div class="modal fade" id="cua-so-thanh-toan" tabindex="-1" role="dialog"
+										aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Cửa sổ thanh toán
+													</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body"> <% if (typeof user != 'undefined') { %> <form
+														action="/checkout" method="POST">
+														<div class="form-group">
+															<label for="email">Email</label>
+															<input type="email" class="form-control" id="email"
+																aria-describedby="emailHelp" value='<%= user.email %>'
+																name="email" disabled>
+															<small id="emailHelp" class="form-text text-muted">We'll
+																never share your email with anyone else.</small>
+														</div>
+														<div class="form-group">
+															<label for="name">Họ tên</label>
+															<input type="text" class="form-control" id="name"
+																value='<%= user.name %>' name="name">
+														</div>
+														<div class="form-group">
+															<label for="address">Địa chỉ</label>
+															<input type="text" class="form-control" id="address"
+																value='<%= user.address %>' name="address">
+														</div>
+														<div class="form-group">
+															<label for="phone">Điện thoại</label>
+															<input type="text" class="form-control" id="phone"
+																value='<%= user.phone %>' name="phone">
+														</div>
+														<div class="form-group">
+															<label for="tongtien">Tổng tiền : <span
+																	id="tong-tien-thanh-toan"></span> </label>
+														</div>
+														<input type="hidden" name="slugs" value=<%= arrayOfSlug %> />
+														<input type="hidden" name="prices" value=<%= arrayOfPrice %> />
+														<input type="hidden" name="total_price"
+															id="total_price_thanh_toan" />
+														<button type="submit" class="btn btn-primary">Thanh
+															toán</button>
+													</form> <% }  else { %> <form action="/checkout" method="POST">
+														<div class="form-group">
+															<label for="name">Họ tên</label>
+															<input type="text" class="form-control" id="name"
+																name="name">
+														</div>
+														<div class="form-group">
+															<label for="address">Địa chỉ</label>
+															<input type="text" class="form-control" id="address"
+																name="address">
+														</div>
+														<div class="form-group">
+															<label for="phone">Điện thoại</label>
+															<input type="text" class="form-control" id="phone"
+																name="phone">
+														</div>
+														<div class="form-group">
+															<label for="tongtien">Tổng tiền : <span
+																	id="tong-tien-thanh-toan"></span> </label>
+														</div>
+														<input type="hidden" name="slugs" value=<%= arrayOfSlug %> />
+														<input type="hidden" name="prices" value=<%= arrayOfPrice %> />
+														<input type="hidden" name="total_price"
+															id="total_price_thanh_toan" />
+														<button type="submit" class="btn btn-primary">Thanh
+															toán</button>
+													</form> <% } %> </div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer --> <% include ./footer.ejs %>
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="styles/bootstrap-4.1.3/popper.js"></script>
+	<script src="styles/bootstrap-4.1.3/bootstrap.min.js"></script>
+	<script src="plugins/greensock/TweenMax.min.js"></script>
+	<script src="plugins/greensock/TimelineMax.min.js"></script>
+	<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+	<script src="plugins/greensock/animation.gsap.min.js"></script>
+	<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="plugins/easing/easing.js"></script>
+	<script src="plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="js/cart.js"></script>
+	<script src="/cart.js"></script>
+</body>
+
+</html>

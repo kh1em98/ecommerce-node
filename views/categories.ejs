@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Categories</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="aStar Fashion Template Project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.3/bootstrap.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="styles/categories.css">
+	<link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
+	<link rel="stylesheet" type="text/css" href="mine.css">
+</head>
+
+<body>
+	<div class="super_container">
+		<!-- Header --> <% include ./nav.ejs %>
+		<!-- Home -->
+		<div class="home">
+			<div class="parallax_background parallax-window" data-parallax="scroll"
+				data-image-src="images/categories.jpg" data-speed="0.8"></div>
+			<div class="home_container">
+				<div class="home_content">
+					<div class="home_title">Shop</div>
+				</div>
+			</div>
+		</div>
+		<!-- Products -->
+		<div class="products">
+			<!-- Sorting & Filtering -->
+			<div class="products_bar">
+				<div class="section_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div
+									class="products_bar_content d-flex flex-column flex-xxl-row align-items-start align-items-xxl-center justify-content-start">
+									<div
+										class="products_bar_side ml-xxl-auto d-flex flex-row align-items-center justify-content-start">
+										<div class="products_dropdown product_dropdown_sorting">
+											<div class="isotope_sorting_text"><span>Default Sorting</span><i
+													class="fa fa-caret-down" aria-hidden="true"></i></div>
+											<ul>
+												<li class="item_sorting_btn" data-typesort="default">Default</li>
+												<li class="item_sorting_btn" data-typesort="ascending">Giá tăng dần</li>
+												<li class="item_sorting_btn" data-typesort="descending"> Giá giảm dần
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="products_container grid"> <% products.map(product => { %> <div
+									class="product grid-item sale">
+									<div class="product_inner" data-slug=<%= product.slug %>>
+										<div class="product_image">
+											<img data-src=<%= product.img %> alt="">
+											<div class="product_tag">sale</div>
+										</div>
+										<div class="product_content text-center">
+											<div class="product_title"><a href=<%= `/product?slug=${product.slug}` %>>
+													<%= product.name %> </a>
+											</div>
+											<div class="product_price">
+												<%= product.pricing.sale.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')  + 'đ'        %>
+												<span> <%= product.pricing.retail %> </span></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#"
+													data-toggle="modal" data-target="#addToCartBtn">add to cart</a>
+											</div>
+											<div class="modal fade" id="addToCartBtn" tabindex="-1" role="dialog"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Giỏ hàng
+															</h5>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body"> Thêm sản phẩm vào giỏ hàng thành công !
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Mua tiếp</button>
+															<a href="/cart" class="btn btn-primary">Tới giỏ hàng</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> <% }) %> </div>
+						</div>
+					</div>
+					<nav aria-label="Page navigation example">
+						<ul class="pagination"> <% arrayNumPage.map((num) => { %> <li class="page-item"><a
+									class="page-link" href="#"> <%= num %> </a></li> <% }) %> </ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- Newsletter --> <% include ./footer.ejs %>
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="styles/bootstrap-4.1.3/popper.js"></script>
+	<script src="styles/bootstrap-4.1.3/bootstrap.min.js"></script>
+	<script src="plugins/greensock/TweenMax.min.js"></script>
+	<script src="plugins/greensock/TimelineMax.min.js"></script>
+	<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+	<script src="plugins/greensock/animation.gsap.min.js"></script>
+	<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="plugins/easing/easing.js"></script>
+	<script src="plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="plugins/Isotope/fitcolumns.js"></script>
+	<script src="js/categories.js"></script>
+	<script src="/sort.js"></script>
+	<script src="/pagination.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="/addtocart.js"></script>
+	<script src="/lazy.js"></script>
+</body>
+
+</html>

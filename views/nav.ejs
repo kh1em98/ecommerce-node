@@ -1,0 +1,93 @@
+<header class="header">
+    <div class="header_content d-flex flex-row align-items-center justify-content-start">
+        <div class="hamburger menu_mm"><i class="fa fa-bars menu_mm" aria-hidden="true"></i></div>
+        <div class="header_logo"> <a href="/">
+                <div>a<span>Khiem</span></div>
+            </a> </div>
+        <nav class="header_nav">
+            <ul class="d-flex flex-row align-items-center justify-content-start">
+                <li><a href="/">home</a></li>
+                <li><a href="#">woman</a></li>
+                <li><a href="#">man</a></li>
+            </ul>
+        </nav>
+        <div class="header_extra ml-auto d-flex flex-row align-items-center justify-content-start">
+            <div class="cart d-flex flex-row align-items-center justify-content-start">
+                <div class="cart_icon"><a href="/cart"> <img src="/images/bag.png" alt="">
+                        <div class="cart_num"><%=numOfProduct%></div>
+                    </a></div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="menu d-flex flex-column align-items-start justify-content-start menu_mm trans_400">
+    <div class="menu_close_container">
+        <div class="menu_close">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="menu_search">
+        <form action="/search?page=1" method="POST" class="header_search_form menu_mm"> <input type="search"
+                class="search_input menu_mm" id="search_input" name="search_input" placeholder="Search"
+                required="required"> <button
+                class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm"> <i
+                    class="fa fa-search menu_mm" aria-hidden="true"></i> </button> </form>
+    </div>
+    <nav class="menu_nav">
+        <ul class="menu_mm">
+            <li class="menu_mm"><a href="/">home</a></li>
+            <li class="menu_mm"><a href="/about">about</a></li>
+            <li class="menu_mm"><a href="#">contact</a></li>
+        </ul>
+    </nav>
+    <div class="menu_extra">
+        <div class="menu_social">
+            <ul>
+                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="sidebar">
+    <div class="sidebar_logo"> <a href="/">
+            <div>a<span>Khiem</span></div>
+        </a> </div>
+    <nav class="sidebar_nav">
+        <ul>
+            <li><a href="/">home<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            <li><a href="/about">about<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            <li><a href="#">contact<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        </ul>
+    </nav>
+    <div class="search">
+        <form action="/search?page=1" method="POST" class="search_form" id="sidebar_search_form"> <input type="text"
+                class="search_input" id="search_input" name="search_input" placeholder="Search" required="required">
+            <button class="search_button"><i class="fa fa-search" aria-hidden="true"></i></button> </form>
+    </div><% if (typeof email !=="undefined"){%> <div
+        class="cart d-flex flex-row align-items-center justify-content-start">
+        <div class="cart_icon"><a href="/cart"> <img src="images/bag.png" alt="">
+                <div class="cart_num"><%=numOfProduct %></div>
+            </a></div>
+        <div class="cart_text">cart</div>
+    </div>
+    <nav class="sidebar_nav">
+        <ul>
+            <li><a href="/user"> Cập nhật profile </a></li>
+            <li><a href="/listorders">Danh sách đơn hàng</a></li>
+            <li><a href="/logout">log out</a></li>
+        </ul>
+    </nav> <%}else{%> <div class="cart d-flex flex-row align-items-center justify-content-start">
+        <div class="cart_icon"><a href="/cart"> <img src="images/bag.png" alt="">
+                <div class="cart_num"><%=numOfProduct %></div>
+            </a></div>
+        <div class="cart_text">cart</div>
+    </div>
+    <nav class="sidebar_nav">
+        <ul>
+            <li><a href="/login"> login</a></li>
+        </ul>
+    </nav> <%}%></div>

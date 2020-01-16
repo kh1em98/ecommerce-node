@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>aKhiem</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="aStar Fashion Template Project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.3/bootstrap.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+	<link rel="stylesheet" type="text/css" href="/mine.css">
+</head>
+
+<body>
+	<div class="super_container">
+		<!-- Header --> <% include ./nav.ejs %>
+		<!-- Home -->
+		<div class="home">
+			<!-- Home Slider -->
+			<div class="home_slider_container">
+				<div class="owl-carousel owl-theme home_slider">
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image"
+							style="background-image:url(https://images.wallpaperscraft.com/image/phone_headphones_player_106009_960x544.jpg)">
+						</div>
+						<div class="home_content_container">
+							<div class="home_content">
+								<div class="home_discount d-flex flex-row align-items-end justify-content-start">
+									<div class="home_discount_num">20</div>
+									<div class="home_discount_text">Discount on the</div>
+								</div>
+								<div class="home_title">New Collection</div>
+								<div class="button button_1 home_button trans_200"><a href="#">Shop NOW!</a></div>
+							</div>
+						</div>
+					</div>
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image"
+							style="background-image:url(https://images.wallpaperscraft.com/image/computer_tablet_painting_109629_960x544.jpg)">
+						</div>
+						<div class="home_content_container">
+							<div class="home_content">
+								<div class="home_discount d-flex flex-row align-items-end justify-content-start">
+									<div class="home_discount_num">20</div>
+									<div class="home_discount_text">Discount on the</div>
+								</div>
+								<div class="home_title">New Collection</div>
+								<div class="button button_1 home_button trans_200"><a href="#">Shop NOW!</a></div>
+							</div>
+						</div>
+					</div>
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image"
+							style="background-image:url(https://images.wallpaperscraft.com/image/playstation_sony_joystick_consoles_101956_960x544.jpg)">
+						</div>
+						<div class="home_content_container">
+							<div class="home_content">
+								<div class="home_discount d-flex flex-row align-items-end justify-content-start">
+									<div class="home_discount_num">20</div>
+									<div class="home_discount_text">Discount on the</div>
+								</div>
+								<div class="home_title">New Collection</div>
+								<div class="button button_1 home_button trans_200"><a href="#">Shop NOW!</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Home Slider Navigation -->
+				<div class="home_slider_nav home_slider_prev trans_200">
+					<div class=" d-flex flex-column align-items-center justify-content-center"><img
+							src="images/prev.png" alt=""></div>
+				</div>
+				<div class="home_slider_nav home_slider_next trans_200">
+					<div class=" d-flex flex-column align-items-center justify-content-center"><img
+							src="images/next.png" alt=""></div>
+				</div>
+			</div>
+		</div>
+		<!-- Boxes -->
+		<div class="boxes">
+			<div class="section_container">
+				<div class="container">
+					<div class="row">
+						<!-- Box -->
+						<div class="col-lg-4 box_col">
+							<div class="box">
+								<div class="box_image"><img
+										src="https://images.wallpaperscraft.com/image/computer_tablet_painting_109629_1280x720.jpg"
+										alt=""></div>
+								<div class="box_title trans_200"><a href="/category?category=may-tinh&page=1">Linh kiện
+										máy tính</a></div>
+							</div>
+						</div>
+						<!-- Box -->
+						<div class="col-lg-4 box_col">
+							<div class="box">
+								<div class="box_image"><img
+										src="https://images.wallpaperscraft.com/image/electric_fretboard_strings_music_111791_1280x720.jpg"
+										alt=""></div>
+								<div class="box_title trans_200"><a href="/category?category=dien-tu&page=1">điện tử,
+										gia dụng </a></div>
+							</div>
+						</div>
+						<!-- Box -->
+						<div class="col-lg-4 box_col">
+							<div class="box">
+								<div class="box_image"><img
+										src="https://images.wallpaperscraft.com/image/book_tulips_coffee_117577_1280x720.jpg"
+										alt=""></div>
+								<div class="box_title trans_200"><a href="/category?category=sach&page=1">sách vở, đồ
+										chơi</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Products -->
+		<div class="products">
+			<div class="section_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="products_container grid"> <% products.map(product => { %> <div
+									class="product grid-item sale">
+									<div class="product_inner" data-slug=<%= product.slug %>>
+										<div class="product_image">
+											<img data-src=<%= product.img.replace("200x200", "400x190") %> alt="">
+										</div>
+										<div class="product_content text-center">
+											<div class="product_title"><a href=<%= `/product?slug=${product.slug}` %>>
+													<%= product.name %> </a>
+											</div>
+											<div class="product_price">
+												<%= product.pricing.sale.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')  + 'đ'    %>
+												<span> <%= product.pricing.retail %> </span></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#"
+													data-toggle="modal" data-target="#addToCartBtn">add to cart</a>
+											</div>
+											<div class="modal fade" id="addToCartBtn" tabindex="-1" role="dialog"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Giỏ hàng
+															</h5>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body"> Thêm sản phẩm vào giỏ hàng thành công !
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Mua tiếp</button>
+															<a href="/cart" class="btn btn-primary">Tới giỏ hàng</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> <% }) %> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <% include ./footer.ejs %>
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="styles/bootstrap-4.1.3/popper.js"></script>
+	<script src="styles/bootstrap-4.1.3/bootstrap.min.js"></script>
+	<script src="plugins/greensock/TweenMax.min.js"></script>
+	<script src="plugins/greensock/TimelineMax.min.js"></script>
+	<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+	<script src="plugins/greensock/animation.gsap.min.js"></script>
+	<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="plugins/easing/easing.js"></script>
+	<script src="plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="plugins/Isotope/fitcolumns.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="/addtocart.js"></script>
+	<script src="/lazy.js"></script>
+</body>
+
+</html>
