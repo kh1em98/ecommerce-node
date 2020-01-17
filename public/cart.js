@@ -122,3 +122,16 @@ document.querySelector(".button_clear").addEventListener("click", async e => {
 });
 
 // Đơn hàng
+
+const thanh_toan_final = document.querySelector(".thanh-toan-final");
+
+thanh_toan_final.addEventListener("click", async e => {
+  e.preventDefault();
+  console.log("Da click");
+  console.log(productNum);
+  console.log(productPrice);
+  const arrayOfSlug = thanh_toan_final.getAttribute("data-slug");
+  const arrayOfPrice = thanh_toan_final.getAttribute("data-price");
+
+  console.log(arrayOfSlug);
+});

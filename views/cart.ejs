@@ -71,15 +71,9 @@
 												<%= product.pricing.sale.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')  + 'đ'  %>
 											</div>
 											<div class="product_quantity_container">
-												<div class="product_quantity ml-lg-auto mr-lg-auto text-center"
-													data-index=<%= i %>>
+												<div class="product_quantity  ml-lg-auto mr-lg-auto text-center"
+													data-index=<%= i %> data-slug=<%= product.slug %>>
 													<span class="product_text product_num"> <%= quantity %> </span>
-													<div class="qty_sub qty_button trans_200 text-center">
-														<span>-</span>
-													</div>
-													<div class="qty_add qty_button trans_200 text-center">
-														<span>+</span>
-													</div>
 												</div>
 											</div>
 										</li> <% i++; }) %> </ul>
@@ -239,8 +233,8 @@
 														<input type="hidden" name="prices" value=<%= arrayOfPrice %> />
 														<input type="hidden" name="total_price"
 															id="total_price_thanh_toan" />
-														<button type="submit" class="btn btn-primary">Thanh
-															toán</button>
+														<button type="submit"
+															class="btn btn-primary thanh-toan-final">Thanh toán</button>
 													</form> <% } %> </div>
 											</div>
 										</div>
